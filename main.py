@@ -3,6 +3,17 @@ from telebot import types
 import telebot.apihelper
 
 telebot.apihelper.proxy = {}
+# 👇 PASTE HERE (Step 2)
+@bot.message_handler(content_types=['photo'])
+def get_photo(message):
+    file_id = message.photo[-1].file_id
+    print("FILE ID:", file_id)
+    bot.reply_to(message, f"File ID:\n{file_id}")
+
+# your other commands
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, "Send me an image and I will give you file_id")
 
 
 # =========================
